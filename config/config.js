@@ -93,6 +93,15 @@ export default {
       component: '../layouts/BasicLayout',
       routes: [
         {
+          path: '/',
+          redirect: '/topics',
+        },
+        {
+          name: 'topic list',
+          path: '/topics',
+          component: './Topics',
+        },
+        {
           name: 'create topic',
           path: '/createTopic',
           component: './CreateTopic',

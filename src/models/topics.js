@@ -1,23 +1,23 @@
-import { create as createService } from '@/services/topic';
-import { message } from 'antd';
+import { getList } from '@/services/topic';
 
-const namespace = 'createTopic';
+const namespace = 'topics';
 const selectState = state => state[namespace];
 
 const Model = {
   namespace,
   state: {
+    topics: [],
     title: '',
-    content: '',
   },
   effects: {
-    *create(_, { call, select }) {
+    *fetchTopics(_, { call, put, select }) {
       const state = yield select(selectState);
-      const result = yield call(createService, state);
+      const result = yield call(getList, { title });
 
-      if (result.status === 'ok') {
-        message.info('Success');
-      }
+      yield put({
+        type: 'overrideStateProps',
+        payload: { topics: result.data_list },
+      });
     },
   },
   reducers: {

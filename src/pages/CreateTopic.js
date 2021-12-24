@@ -5,7 +5,7 @@ import React from 'react';
 @connect(({ createTopic }) => ({
   createTopic,
 }))
-export default class UserLogin extends React.Component {
+export default class CreateTopic extends React.Component {
   onChange(type, value) {
     let payload = {};
     payload[type] = value.target.value;

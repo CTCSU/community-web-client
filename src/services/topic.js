@@ -7,3 +7,9 @@ export async function login(params) {
     data: params,
   });
 }
+
+export async function getList(params) {
+  return request(`${API_HOST}/topics`, {
+    params,
+  });
+}
