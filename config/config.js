@@ -90,41 +90,36 @@ export default {
     },
     {
       path: '/',
-      component: '../layouts/SecurityLayout',
+      component: '../layouts/BasicLayout',
       routes: [
         {
+          name: 'create topic',
+          path: '/createTopic',
+          component: './CreateTopic',
+        },
+        {
           path: '/',
-          component: '../layouts/BasicLayout',
-          authority: ['admin', 'user'],
+          redirect: '/welcome',
+        },
+        {
+          path: '/welcome',
+          name: 'welcome',
+          icon: 'smile',
+          component: './Welcome',
+        },
+        {
+          path: '/admin',
+          name: 'admin',
+          icon: 'crown',
+          component: './Admin',
+          authority: ['admin'],
           routes: [
             {
-              path: '/',
-              redirect: '/welcome',
-            },
-            {
-              path: '/welcome',
-              name: 'welcome',
+              path: '/admin/sub-page',
+              name: 'sub-page',
               icon: 'smile',
               component: './Welcome',
-            },
-            {
-              path: '/admin',
-              name: 'admin',
-              icon: 'crown',
-              component: './Admin',
               authority: ['admin'],
-              routes: [
-                {
-                  path: '/admin/sub-page',
-                  name: 'sub-page',
-                  icon: 'smile',
-                  component: './Welcome',
-                  authority: ['admin'],
-                },
-              ],
-            },
-            {
-              component: './404',
             },
           ],
         },
